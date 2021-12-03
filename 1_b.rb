@@ -13,8 +13,7 @@ end
 
 class Sonar
   extend T::Sig
-  attr_accessor :measurements
-  attr_accessor :measurement_windows
+  attr_accessor :measurements, :measurement_windows
 
   class << self
     extend T::Sig

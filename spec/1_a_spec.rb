@@ -4,9 +4,6 @@
 Bundler.require
 require_relative '../1_a'
 
-# RSpec.describe Measurement do
-# end
-
 RSpec.describe Sonar do
   let(:test_data) { [199, 200, 208, 210, 200, 207, 240, 269, 260, 263] }
   let(:test_data_string) { test_data.join("\n") }

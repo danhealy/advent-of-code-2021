@@ -39,7 +39,6 @@ class Sonar
     end
   end
 
-
   sig { returns(Integer) }
   def count_depth_increases
     measurements.each_cons(2).inject(0) do |acc, (a, b)|
