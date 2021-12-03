@@ -42,8 +42,8 @@ class Submarine
 
   AXIS = {
     forward: :position,
-    up: :depth,
-    down: :depth
+    up: :aim,
+    down: :aim
   }.freeze
 
   DIRECTIONS = {
@@ -58,10 +58,14 @@ class Submarine
   sig { returns(Integer) }
   attr_accessor :position
 
-  sig { params(depth: Integer, position: Integer).void }
-  def initialize(depth: 0, position: 0)
-    @depth = depth
+  sig { returns(Integer) }
+  attr_accessor :aim
+
+  sig { params(depth: Integer, position: Integer, aim: Integer).void }
+  def initialize(depth: 0, position: 0, aim: 0)
+    @depth    = depth
     @position = position
+    @aim      = aim
   end
 
   sig { params(instruction: Instruction).returns(T.self_type) }
@@ -71,8 +75,9 @@ class Submarine
     case AXIS[instruction.direction]
     when :position
       @position += magnitude
-    else # depth
-      @depth += magnitude
+      @depth += aim * magnitude
+    else # aim
+      @aim += magnitude
     end
     self
   end

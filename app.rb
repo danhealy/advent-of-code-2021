@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 Bundler.require
-require_relative "config.rb"
+require_relative 'config'
 
 opts = Slop.parse do |o|
   # ...
