@@ -43,20 +43,20 @@ class Status
     @most_common_bits =
       diagnostics
       .transpose
-      .map {|pos| (pos.count("1") > diagnostics.length / 2.0) ? "1" : "0" }
+      .map { |pos| pos.count('1') >= diagnostics.length / 2.0 ? '1' : '0' }
       .join
       .to_i(2)
   end
 
   sig { returns(Integer) }
   def power_consumption
-    most_common_bits * (most_common_bits ^ @mask)
+    most_common_bits * (most_common_bits ^ mask)
   end
 
   private
 
   sig { void }
   def set_mask!
-    @mask = ("1"*T.must(@diagnostics.first).length).to_i(2)
+    @mask = ('1' * T.must(diagnostics.first).length).to_i(2)
   end
 end
